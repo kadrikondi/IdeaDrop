@@ -1,0 +1,14 @@
+{
+  "name": "ideadrop",
+  "version": "1.0.0",
+  "description": "a platform that allow user to drop their ideas",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "idris abdulkadri",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
