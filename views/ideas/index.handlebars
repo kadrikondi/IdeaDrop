@@ -1,0 +1,9 @@
+{{#each ideas}}
+<div class="card card-body mb-3"><h4 style="text-transform: capitalize">{{title}}</h4>
+<p>{{details}}</p>
+<a class="btn btn-sm btn-info btn-block" href="/ideas/edit/{{id}}">Edit</a>
+
+</div>
+{{else}}
+<p>no idea listed</p>
+{{/each}}
