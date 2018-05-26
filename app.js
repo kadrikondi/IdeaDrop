@@ -103,7 +103,10 @@ if (errors.length > 0){
 
 });
 
-
+//edit form process
+app.put('ideas/:id', (req,res)=>{
+    res.send('Put');
+})
 //server
 const port = 5000;
 app.listen(port, ()=>{
