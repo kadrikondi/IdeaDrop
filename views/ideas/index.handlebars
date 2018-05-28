@@ -1,7 +1,13 @@
 {{#each ideas}}
 <div class="card card-body mb-3"><h4 style="text-transform: capitalize">{{title}}</h4>
 <p>{{details}}</p>
-<a class="btn btn-sm btn-info btn-block" href="/ideas/edit/{{id}}">Edit</a>
+<a class="btn btn-sm btn-info btn-block mb-2 w-25" href="/ideas/edit/{{id}}">Edit</a>
+<form method="post" action="/ideas/{{id}}?_method=DELETE">
+<input type="hidden" name="_method" value ="DELETE">
+<input type="submit" class="btn btn-danger btn-block btn-sm w-25" value="Delete">
+
+
+</form>
 
 </div>
 {{else}}
