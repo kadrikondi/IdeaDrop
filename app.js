@@ -5,6 +5,7 @@ const methodOverride =require('method-override');
 const flash =require('connect-flash');
 const session = require('express-session')
 const mongoose = require('mongoose');
+const passport = require('passport');
 const bodyParser = require('body-parser')
 
 
@@ -12,6 +13,9 @@ const app = express();
 //load routes
 const ideas = require('./routes/ideas');
 const users = require('./routes/users');
+
+//PASSPORT config
+require('./config/passport')(passport);
 //conect the db
 mongoose.connect('mongodb://kadrikondi:kadzee222@ds129670.mlab.com:29670/kondidb');
 
