@@ -36,7 +36,8 @@ res.render('ideas/edit', {idea:idea})
 
 //process form
 router.post('/', (req,res)=>{
-let errors =[];
+ //validation
+    let errors =[];
 
 if(!req.body.title){
 errors.push({text:`please add some title`});
@@ -51,11 +52,11 @@ res.render('ideas/add', {
    details:req.body.details
 });
 }else{
-const newUser ={
+const newIdea ={
    title:req.body.title,
    details:req.body.details
 }
-new Idea(newUser).save()
+new Idea(newIdea).save()
 .then(idea =>{
    req.flash('success_msg' ,'future Idea Added');
   
