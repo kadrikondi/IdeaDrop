@@ -3,24 +3,24 @@
     <div class="card card-body">
         <img  class="logo" src="/img/ideadrop1.png" alt="ideadrop logo">
   <h3 class="text-center">Account Register</h3>
-  <form action="">
+  <form action="/users/register" method="post">
       <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class='form-control' required placeholder="enter your name" name="name">
+          <input type="text" class='form-control' required placeholder="enter your name" name="name" value ={{name}}>
       
       <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class='form-control' required name ="email" placeholder="enter your email">
+          <input type="email" class='form-control' required name ="email" placeholder="enter your email" value="{{email}}">
           
       </div>
       <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class='form-control' required placeholder="enter your password" name="password">
+          <input type="password" class='form-control' required placeholder="enter your password" name="password" value ="{{password}}">
           
       </div>
       <div class="form-group">
           <label for="password2"> Confirm Password</label>
-          <input type="password2" class='form-control' required placeholder="confirm password" name="password2">
+          <input type="password" class='form-control' required placeholder="confirm password" name="password2" value="{{password2}}">
           
       </div>
       <button type="submit" class="btn btn-info" name="submit">Submit</button>
