@@ -42,20 +42,25 @@ app.use(session({
     resave:true,
     saveUninitialized:true
    // cookies:{secure:true}
-}))
+}));
+//passport middleware
+app.use(passport.initialize());
+  app.use(passport.session());
+//flash midleware
 app.use(flash());
-//Global variable to use flash message
+//Global variables
 app.use((req,res,next)=>{
     res.locals.success_msg = req.flash('success_msg');
     
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error =req.flash('error');
+    res.locals.user =req.user || null;
  next();
 });
 
 //index route
  app.get('/', (req,res) =>{
-    const title = 'Welcome kondi';
+    const title = 'Welcome IdeaDrop';
 res.render("index", {title:title
 });
 
@@ -76,7 +81,7 @@ res.render("index", {title:title
 app.use('/ideas', ideas);
 app.use('/users', users);
 //server
-const port = 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, ()=>{
     console.log(`server started at ${port}`)
 });
