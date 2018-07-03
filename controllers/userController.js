@@ -15,7 +15,7 @@ exports.getloginPage= (req,res)=>{
 
 exports.postLogin = (req,res, next)=>{
     passport.authenticate('local',{
-        successRedirect:'/',
+        successRedirect:'/ideas',
         failureRedirect:'/login',
         failureFlash:true
     })(req,res,next);
