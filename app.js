@@ -11,12 +11,12 @@ const bodyParser = require('body-parser')
 
 const app = express();
 //load routes
-const ideas = require('./routes/ideas');
-const users = require('./routes/users');
-
+//const ideas = require('./routes/ideas');
+const router = require('./routes/index');
 //PASSPORT config
 require('./config/passport')(passport);
 //conect the db
+mongoose.connect('mongodb://localhost/ideadrop')||
 mongoose.connect('mongodb://kadrikondi:kadzee222@ds129670.mlab.com:29670/kondidb');
 
 
@@ -32,6 +32,7 @@ app.set('view engine','handlebars');
 //body parser middleware
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
 //static  folder
 app.use(express.static(path.join(__dirname,'public')))
 // method override middlware
@@ -47,7 +48,7 @@ app.use(session({
 app.use(passport.initialize());
   app.use(passport.session());
 //flash midleware
-app.use(flash());
+app.use(flash()); 
 //Global variables
 app.use((req,res,next)=>{
     res.locals.success_msg = req.flash('success_msg');
@@ -71,15 +72,15 @@ res.render("index", {title:title
     res.render('about');
     
      });
-     //blog route
+     //contact route
      app.get('/contact' ,(req, res)=>{
          res.render('contact');
      });
    
 
 //use routes
-app.use('/ideas', ideas);
-app.use('/users', users);
+//app.use('/ideas', ideas);
+app.use('/', router);
 //server
 const port = process.env.PORT || 5000;
 app.listen(port, ()=>{
