@@ -7,7 +7,7 @@ const passport = require('passport');
 require ('../models/User');
 const User = mongoose.model('users');
 
-
+// login page
 
 exports.getloginPage= (req,res)=>{
     res.render('users/login');
