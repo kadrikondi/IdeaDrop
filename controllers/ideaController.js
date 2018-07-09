@@ -11,16 +11,16 @@ exports.ideaHomePage=(req, res)=>{
    Idea.find({user:req.user.id}) //to find all ideas =Idea.find({});
     .sort({date:'asc'})
     .then(ideas=>{
-
-    res.render('ideas/index' , {ideas:ideas
-      });
-      
+const username= req.user.name
+    res.render('ideas/index' , {ideas:ideas,username:username
+              });
+      console.log(username)
    })
 }
 //add idea form
 exports.getAddIdeaPage =(req, res)=>{
     Idea
-    res.render('ideas/add')
+    res.render('ideas/add',{username:req.user.name})
     };
 
 
