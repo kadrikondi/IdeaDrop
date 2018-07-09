@@ -15,9 +15,19 @@ const app = express();
 const router = require('./routes/index');
 //PASSPORT config
 require('./config/passport')(passport);
-//conect the db
-mongoose.connect('mongodb://localhost/ideadrop')||
-mongoose.connect('mongodb://kadrikondi:kadzee222@ds129670.mlab.com:29670/kondidb');
+//db config
+const db =require('./config/database');
+//conect to config online
+mongoose.connect(db.mongoURI)
+.then(()=>{
+    console.log('database connect')
+})
+.catch(err =>{
+    console.log(err)
+})
+// //conect the db
+// mongoose.connect('mongodb://localhost/ideadrop')||
+// mongoose.connect('mongodb://kadrikondi:kadzee222@ds129670.mlab.com:29670/kondidb');
 
 
 
