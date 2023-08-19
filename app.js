@@ -3,10 +3,12 @@ const path =require('path');
 const exphbs = require('express-handlebars');
 const methodOverride =require('method-override');
 const flash =require('connect-flash');
+const Handlebars = require('handlebars');
 const session = require('express-session')
 const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser')
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 
 const app = express();
@@ -18,25 +20,36 @@ require('./config/passport')(passport);
 //db config
 const db =require('./config/database');
 //conect to config online
-mongoose.connect(db.mongoURI)
+mongoose.connect('mongodb+srv://ohonotv:kadri4God222.@cluster0.mowhcx2.mongodb.net/?retryWrites=true&w=majority',{
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  })
 .then(()=>{
     console.log('database connect')
 })
 .catch(err =>{
     console.log(err)
 })
+
+
 // //conect the db
 // mongoose.connect('mongodb://localhost/ideadrop')||
 // mongoose.connect('mongodb://kadrikondi:kadzee222@ds129670.mlab.com:29670/kondidb');
 
 
 
+// "mongoose": "^5.1.2",
 
 //Connect to mongoose
 
 // handlebars  middleware works
-app.engine('handlebars',exphbs({defaultLayout: 'main'
-}))
+app.engine('handlebars',exphbs({defaultLayout: 'main',
+    // ...implement newly added insecure prototype access
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+
+}),
+)
 app.set('view engine','handlebars');
 
 //body parser middleware
