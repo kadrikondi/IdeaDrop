@@ -15,3 +15,16 @@
 .bg{
     background: url('/img/ideas.jpg') no-repeat;
 }
+.bgS{
+    display: none;
+}
+@media screen and (max-width:500px){
+.bg{
+    display: none;
+}
+.bgS{
+    display: block;
+    background: url('/img/ideas.jpg') no-repeat;
+
+}
+}
